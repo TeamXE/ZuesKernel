@@ -1037,7 +1037,7 @@ error:
 #else
 void acdb_rtc_set_err(u32 err_code)
 {
-	return 0
+	return 0;
 }
 #endif /*CONFIG_DEBUG_FS*/
 static s32 acdb_set_calibration_blk(unsigned long arg)
