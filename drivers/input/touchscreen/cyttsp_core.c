@@ -36,6 +36,11 @@
 
 #include "cyttsp_core.h"
 
+#ifdef CONFIG_TOUCHSCREEN_CYPRESS_SWEEP2WAKE
+#include <linux/leds-pm8058.h>
+#include <linux/s2w-switch.h>
+#endif
+
 /* Bootloader number of command keys */
 #define CY_NUM_BL_KEYS		8
 
