@@ -46,8 +46,23 @@
 #include <mach/msm_bus.h>
 #include <mach/rpm-regulator.h>
 
+#ifdef CONFIG_FORCE_FAST_CHARGE
+#include <linux/fastchg.h>
+#define USB_FASTCHG_LOAD 1000 /* uA */
+#endif
+
 #define MSM_USB_BASE	(motg->regs)
 #define DRIVER_NAME	"msm_otg"
+
+#ifdef CONFIG_FORCE_FAST_CHARGE
+
+        if (force_fast_charge == 1) {
+                        mA = USB_FASTCHG_LOAD;
+                        pr_info("USB fast charging is ON - 1000mA.\n");
+        } else {
+                pr_info("USB fast charging is OFF.\n");
+        }
+#endif
 
 #define ID_TIMER_FREQ		(jiffies + msecs_to_jiffies(500))
 #define ULPI_IO_TIMEOUT_USEC	(10 * 1000)
