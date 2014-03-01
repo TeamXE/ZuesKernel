@@ -2494,5 +2494,4 @@ config SONY_SSM
 	  This enables support for power mode notifications, required by Super
 	  Stamina Mode.
 
-endif
 
