@@ -451,7 +451,7 @@ config GPIO_TB0219
 	select GPIO_VR41XX
 
 source "drivers/char/pcmcia/Kconfig"
-source "drivers/char/frandom/Kconfig
+source "drivers/char/frandom/Kconfig"
 
 config MWAVE
 	tristate "ACP Modem (Mwave) support"
