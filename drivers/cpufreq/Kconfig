@@ -71,6 +71,23 @@ config CPU_FREQ_DEFAULT_GOV_ONDEMANDX
            driver. Fallback governor will be the performance governor.
            OndemandX has built in sleep profile, but not working Sysfs
            interface
+
+config CPU_FREQ_DEFAULT_GOV_MINMAX
+ 	   bool "minmax"
+ 	   select CPU_FREQ_GOV_MINMAX
+ 	   select CPU_FREQ_GOV_PERFORMANCE
+ 	   help
+ 	     Use the CPUFreq governor 'minmax' as default. This minimizes the
+ 	     frequency jumps does by the governor. This is aimed at maximizing
+ 	     both perfomance and battery life.
+		 
+config CPU_FREQ_GOV_ONDEMANDX_INPUT
+        bool "Ramp up CPU frequency on input events"
+        default y
+        depends on CPU_FREQ_GOV_ONDEMANDX
+        help
+          Enable installation of an input event handler which will ramp up the
+          CPU to max frequency when an input event is received.
  
 config CPU_FREQ_DEFAULT_GOV_POWERSAVE
 	bool "powersave"
@@ -186,7 +203,7 @@ config CPU_FREQ_GOV_ONDEMAND
 
 	  If in doubt, say N.
 	  
-+config CPU_FREQ_GOV_ONDEMANDX
+config CPU_FREQ_GOV_ONDEMANDX
          tristate "'ondemandx' cpufreq policy governor"
          select CPU_FREQ_TABLE
          help
@@ -203,8 +220,19 @@ config CPU_FREQ_GOV_ONDEMAND
            For details, take a look at linux/Documentation/cpu-freq.
   	
            If in doubt, say N.
+		   
 
-+config CPU_FREQ_GOV_SMARTASS2
+config CPU_FREQ_GOV_MINMAX
+	   tristate "'minmax' cpufreq governor"
+	   depends on CPU_FREQ
+	   help
+	     'minmax' - this driver tries to minimize the frequency jumps by limiting
+	      the the selected frequencies to either the min or the max frequency of
+	      the policy. The frequency is selected according to the load.
+
+	      If in doubt, say N.
+
+config CPU_FREQ_GOV_SMARTASS2
 	tristate "'smartassV2' cpufreq governor"
 	depends on CPU_FREQ
 	help
