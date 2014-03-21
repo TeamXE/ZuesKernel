@@ -80,14 +80,6 @@ config CPU_FREQ_DEFAULT_GOV_MINMAX
  	     Use the CPUFreq governor 'minmax' as default. This minimizes the
  	     frequency jumps does by the governor. This is aimed at maximizing
  	     both perfomance and battery life.
-		 
-config CPU_FREQ_GOV_ONDEMANDX_INPUT
-        bool "Ramp up CPU frequency on input events"
-        default y
-        depends on CPU_FREQ_GOV_ONDEMANDX
-        help
-          Enable installation of an input event handler which will ramp up the
-          CPU to max frequency when an input event is received.
  
 config CPU_FREQ_DEFAULT_GOV_POWERSAVE
 	bool "powersave"
