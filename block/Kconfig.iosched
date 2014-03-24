@@ -31,6 +31,13 @@ config IOSCHED_TEST
 	  It allows testing a block device by dispatching specific requests
 	  according to the test case and declare PASS/FAIL according to the
 	  requests completion error code.
+	  
+config IOSCHED_ROW
+	tristate "ROW I/O scheduler"
+	depends on (BLK_CGROUP=m && m) || !BLK_CGROUP || BLK_CGROUP=y
+	default y
+	---help---
+	  ROW io scheduler.
 
 config IOSCHED_DEADLINE
 	tristate "Deadline I/O scheduler"
