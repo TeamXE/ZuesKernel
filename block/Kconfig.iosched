@@ -38,6 +38,20 @@ config IOSCHED_ROW
 	default y
 	---help---
 	  ROW io scheduler.
+	  
+config IOSCHED_VR
+	tristate "VR I/O scheduler"
+	depends on (BLK_CGROUP=m && m) || !BLK_CGROUP || BLK_CGROUP=y
+	default y
+	---help---
+	  VR io scheduler.
+
+config IOSCHED_ZEN
+	tristate "ZEN I/O scheduler"
+	depends on (BLK_CGROUP=m && m) || !BLK_CGROUP || BLK_CGROUP=y
+	default y
+	---help---
+	  ZEN io scheduler.
 
 config IOSCHED_CFQ
 	tristate "CFQ I/O scheduler"
@@ -85,6 +99,8 @@ config DEFAULT_IOSCHED
 	default "cfq" if DEFAULT_CFQ
 	default "noop" if DEFAULT_NOOP
 	default "row" if DEFAULT_ROW
+	default "vr" if DEFAULT_VR
+	default "zen" if DEFAULT_ZEN
 
 endmenu
 
