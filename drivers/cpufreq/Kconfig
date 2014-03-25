@@ -273,13 +273,6 @@ config CPU_FREQ_GOV_HOTPLUG
         help
 
           If in doubt, say N.
-          
-config CPU_FREQ_GOV_HOTPLUGX
-        tristate "'hotplugx' cpufreq governor"
-        depends on CPU_FREQ
-        help
-
-          If in doubt, say N.
 
 config CPU_FREQ_GOV_INTERACTIVEX
         tristate "'interactivex' cpufreq governor"
