@@ -58,6 +58,10 @@ config CPU_FREQ_DEFAULT_GOV_PERFORMANCE
 	  the frequency statically to the highest frequency supported by
 	  the CPU.
 	  
+config CPU_FREQ_DEFAULT_GOV_BADASS
+       bool "badass"
+       select CPU_FREQ_GOV_BADASS
+	  
 config CPU_FREQ_DEFAULT_GOV_POWERSAVE
 	bool "powersave"
 	depends on EXPERT
