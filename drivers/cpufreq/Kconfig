@@ -68,6 +68,12 @@ config CPU_FREQ_DEFAULT_GOV_WHEATLEY
 config CPU_FREQ_DEFAULT_GOV_BADASS
        bool "badass"
        select CPU_FREQ_GOV_BADASS
+       
+config CPU_FREQ_DEFAULT_GOV_SMARTASSH3
+	bool "smartassH3"
+	select CPU_FREQ_GOV_SMARTASSH3
+	help
+	  Use the CPUFreq governor 'SmartassH3' as default.
 	  
 config CPU_FREQ_DEFAULT_GOV_POWERSAVE
 	bool "powersave"
@@ -183,6 +189,14 @@ config CPU_FREQ_GOV_BADASS
  	 transitions).
  
  	 If in doubt, say N.
+ 	 
+config CPU_FREQ_GOV_SMARTASSH3
+	tristate "'SmartassH3' cpufreq governor"
+	depends on CPU_FREQ
+	help
+	  'SmartassH3' - a "smartassV2 with tweaks by H3ROS" governor!
+
+	  If in doubt, say N.
 
 config CPU_FREQ_GOV_POWERSAVE
 	tristate "'powersave' governor"
